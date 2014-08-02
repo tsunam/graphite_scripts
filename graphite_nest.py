@@ -13,7 +13,6 @@ import time
 import struct
 import yaml
 import os
-from optparse import OptionParser
 
 try:
 	import json
