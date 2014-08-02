@@ -104,7 +104,10 @@ class Nest:
 		req = urllib2.Request(self.weather_url + self.zipcode)
 		res = urllib2.urlopen(req).read()
 		rep = json.loads(res)
-		self.weather["temperature"] = rep[self.zipcode]["current"]["temp_c"]
+		if (self.metric is True):
+			self.weather["temperature"] = rep[self.zipcode]["current"]["temp_c"]
+		else:
+			self.weather["temperature"] = temperature(rep[self.zipcode]["current"]["temp_c"])
 		if (self.metric is True):
 			self.weather["windspeed"] = rep[self.zipcode]["current"]["wind_kph"]
 		else:
